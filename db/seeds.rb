@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+5.times do |i|
+  kitten = Kitten.where(name: "Kitten #{i}").first_or_initialize
+  kitten.update(age: Random.rand(50), cuteness: Random.rand(10), softness: Random.rand(10))
+end

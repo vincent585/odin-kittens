@@ -1,0 +1,35 @@
+<h2>Enter kitten details</h2>
+
+<%= form_with model: @kitten do |f| %>
+  <% if f.object.errors.any? %>
+    <div>
+      <% f.object.errors.full_messages.each do |msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, 'Name:' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :age, 'Age:' %>
+    <%= f.number_field :age, in: 1..50, step: 1 %>
+  </div>
+
+  <div>
+    <%= f.label :cuteness, 'Cuteness rating:' %>
+    <%= f.number_field :cuteness, in: 1..10, step: 1 %>
+  </div>
+
+  <div>
+    <%= f.label :softness, 'Softness rating:' %>
+    <%= f.number_field :softness, in: 1..10, step: 1 %>
+  </div>
+
+  <%= f.button 'Submit' %>
+<% end %>
