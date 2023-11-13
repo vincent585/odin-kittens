@@ -2,9 +2,19 @@ class KittensController < ApplicationController
   before_action :set_kitten, except: %i[index new create]
   def index
     @kittens = Kitten.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @kittens }
+    end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @kitten }
+    end
+  end
 
   def new
     @kitten = Kitten.new
